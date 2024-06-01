@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     console.log(this.user);
     this.userService.loginUser(this.user).subscribe(data=>{
       alert("login successfully")
-    },error=>alert("Sorry Please Enter vali user name and password"));
-    
+    },error=>alert("Sorry Please Enter valid user name and password"));
+
   }
 }
