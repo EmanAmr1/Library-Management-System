@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -16,9 +18,13 @@ public class UserService {
     UserRepo userRepo;
 
 
+    public List<User> allUsers(){
+        return this.userRepo.findAll();
+    }
+
     public ResponseEntity<?> LoginUser(User userData){
         User user =userRepo.findUserByUserName(userData.getUserName());
-        if(user.getPassword().equals(userData.getPassword()))
+        if(user.getPassword().equals(userData.getPassword()) && user.getRole().equals(userData.getRole()))
             return ResponseEntity.ok(user);
         return (ResponseEntity<?>) ResponseEntity.internalServerError();
     }

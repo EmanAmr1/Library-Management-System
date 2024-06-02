@@ -12,11 +12,24 @@ export class LoginComponent implements OnInit {
 
   user:User = new User();
 
-  constructor(private userService:LoginserviceService, private router: Router ) { }
+
+  constructor(private userService:LoginserviceService, private router: Router ) {
+    this.user.role = {
+      id: 2, // Initialize with appropriate default value
+      roleName: '' // Initialize with appropriate default value
+    };
+
+   }
 
   ngOnInit(): void {
   }
   userLogin(){
+
+    if (this.user.role.roleName === 'admin') {
+      this.user.role.id = 1;
+    } else if (this.user.role.roleName === 'student') {
+      this.user.role.id = 2;
+    }
     console.log(this.user);
     this.userService.loginUser(this.user).subscribe((data:User)=>{
       console.log(data)

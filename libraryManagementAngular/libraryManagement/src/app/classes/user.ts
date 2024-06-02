@@ -7,5 +7,8 @@ lastName!:string;
 userName!:string;
  password!:string;
  gender!:Gender;
-
+role!:{
+id:number,
+roleName:string
+}
 }
