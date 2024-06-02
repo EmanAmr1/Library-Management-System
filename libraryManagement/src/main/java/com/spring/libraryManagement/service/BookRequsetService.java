@@ -29,6 +29,13 @@ public class BookRequsetService {
         User user = userRepo.findUserByUserName(username);
         Book book = bookRepo.findById(bookId).orElseThrow(() -> new IllegalArgumentException("Invalid book ID"));
 
+        // Check if the user has already requested the book
+        boolean hasRequested = bookRequestRepo.existsByUserAndBook(user, book);
+        if (hasRequested) {
+            throw new IllegalStateException("You have already requested this book.");
+        }
+
+
         //get the user requested book
         BookRequest bookRequest = new BookRequest(user, book, LocalDateTime.now());
         return bookRequestRepo.save(bookRequest);

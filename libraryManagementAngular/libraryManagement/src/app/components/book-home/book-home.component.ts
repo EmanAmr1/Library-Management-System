@@ -38,7 +38,7 @@ export class BookHomeComponent implements OnInit {
       },
       (error) => {
         console.error('Error requesting book', error);
-        alert('Error requesting book');
+        alert('You have aleardy requesting this book');
       }
     );
   }

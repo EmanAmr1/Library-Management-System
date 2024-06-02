@@ -1,5 +1,6 @@
 package com.spring.libraryManagement.repository;
 
+import com.spring.libraryManagement.model.entity.Book;
 import com.spring.libraryManagement.model.entity.BookRequest;
 import com.spring.libraryManagement.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,4 +12,6 @@ import java.util.List;
 public interface BookRequestRepo extends JpaRepository<BookRequest,Long> {
 
     List<BookRequest> findByUser(User user);
+
+    boolean existsByUserAndBook(User user, Book book);
 }
