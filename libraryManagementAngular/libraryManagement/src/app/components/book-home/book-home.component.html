@@ -1,20 +1,23 @@
 
-
-<!-- As a heading -->
 <nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1">Books Home</span>
+  <span class="navbar-brand mb-0 h1 ">Available Books</span>
+  <a class="link-danger" routerLink="/requestedBooks">Requested Books</a>
 </nav>
 
+<section class="vh-150" style="background-color: #eee;">
+  <div class="container h-200">
 <div class="container col-lg-12" >
   <div class="row "  >
-<div class="card m-4  col-lg-2 "  *ngFor="let book of books" >
+<div class="card m-4  col-lg-3 shadow-lg"  *ngFor="let book of books" >
 
   <div class="card-body "  >
     <h5 class="card-title">{{book.title}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
     <p class="card-text">{{book.description}}</p>
-    <a href="#" class="btn btn-warning btn-sm text-white">Request Book</a>
+    <a class="btn  btn-info btn-sm text-white" (click)="requestBook(book.id)" >Request Book </a>
   </div>
 </div>
 </div>
 </div>
+</div>
+</section>

@@ -1,10 +1,13 @@
 package com.spring.libraryManagement.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spring.libraryManagement.model.enums.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "user_table")
@@ -24,4 +27,10 @@ public class User {
     private String lastName;
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<BookRequest> bookRequests;
+
 }

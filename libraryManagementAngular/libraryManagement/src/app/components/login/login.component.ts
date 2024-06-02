@@ -18,10 +18,13 @@ export class LoginComponent implements OnInit {
   }
   userLogin(){
     console.log(this.user);
-    this.userService.loginUser(this.user).subscribe(data=>{
-      
+    this.userService.loginUser(this.user).subscribe((data:User)=>{
+      console.log(data)
+      localStorage.setItem('user', JSON.stringify(data.userName));
       this.router.navigate(['/bookHome']);
     },error=>alert("Sorry Please Enter valid user name and password"));
 
   }
+
+
 }
