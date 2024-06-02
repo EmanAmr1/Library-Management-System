@@ -1,5 +1,6 @@
 package com.spring.libraryManagement.service;
 
+import com.spring.libraryManagement.model.entity.Role;
 import com.spring.libraryManagement.model.entity.User;
 import com.spring.libraryManagement.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ public class UserService {
 
 
     public ResponseEntity<?> SignupUser( User userData){
+        Role defaultRole = new Role();
+        defaultRole.setId(2L); // Assuming "student" role ID is 1
+        defaultRole.setRoleName("student");
+        userData.setRole(defaultRole);
         User userSignupDta =this.userRepo.save(userData);
         return ResponseEntity.ok(userSignupDta);
     }

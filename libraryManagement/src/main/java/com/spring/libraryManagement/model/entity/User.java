@@ -29,6 +29,10 @@ public class User {
     private Gender gender;
 
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<BookRequest> bookRequests;
