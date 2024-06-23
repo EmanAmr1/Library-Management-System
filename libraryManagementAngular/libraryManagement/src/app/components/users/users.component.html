@@ -1,26 +1,60 @@
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Admin Panel</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link"routerLink="/users">Users</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/adduser">Add New User </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/addbook">Add New Book</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
 
-<div class="container">
+
+<div class="container mt-3">
   <div class="row">
-
-    <h1 class="m-1"> Users </h1>
-<table class="table m-1">
-  <thead>
-    <tr >
-
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Gender</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr  *ngFor="let user of users ">
-
-      <td>{{user.firstName}}</td>
-      <td>{{user.lastName}}</td>
-      <td>{{user.gender}}</td>
-    </tr>
-
-  </tbody>
-</table>
+    <div class="col-12">
+      <h3 class="m-2">Users</h3>
+      <div class="card">
+        <div class="card-header">
+          User List
+        </div>
+        <div class="card-body">
+          <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Gender</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.gender}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
+
+<!-- Footer -->
+<footer class="bg-light text-center text-lg-start mt-5">
+  <div class="text-center p-3">
+    © 2023 User Management System:
+    <a class="text-dark" href="#">usermanagement.com</a>
+  </div>
+</footer>
