@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './components/signup/signup.component';
 import { BookHomeComponent } from './components/book-home/book-home.component';
 import { UserReuestedBooksComponent } from './components/user-reuested-books/user-reuested-books.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { UserReuestedBooksComponent } from './components/user-reuested-books/use
     LoginComponent,
     SignupComponent,
     BookHomeComponent,
-    UserReuestedBooksComponent
+    UserReuestedBooksComponent,
+    AdminHomeComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,

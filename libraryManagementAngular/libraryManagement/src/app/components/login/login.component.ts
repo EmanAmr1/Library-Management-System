@@ -27,14 +27,16 @@ export class LoginComponent implements OnInit {
 
     if (this.user.role.roleName === 'admin') {
       this.user.role.id = 1;
+      this.router.navigate(['/adminHome']);
     } else if (this.user.role.roleName === 'student') {
       this.user.role.id = 2;
+      this.router.navigate(['/bookHome']);
     }
     console.log(this.user);
     this.userService.loginUser(this.user).subscribe((data:User)=>{
       console.log(data)
       localStorage.setItem('user', JSON.stringify(data.userName));
-      this.router.navigate(['/bookHome']);
+     // this.router.navigate(['/bookHome']);
     },error=>alert("Sorry Please Enter valid user name and password"));
 
   }

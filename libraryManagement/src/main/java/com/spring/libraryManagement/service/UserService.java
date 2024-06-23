@@ -33,7 +33,7 @@ public class UserService {
 
     public ResponseEntity<?> SignupUser( User userData){
         Role defaultRole = new Role();
-        defaultRole.setId(2L); // Assuming "student" role ID is 1
+        defaultRole.setId(2L);
         defaultRole.setRoleName("student");
         userData.setRole(defaultRole);
         User userSignupDta =this.userRepo.save(userData);

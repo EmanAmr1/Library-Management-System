@@ -9,12 +9,17 @@ import { Book } from '../classes/book';
 export class BookServiceService {
 
   private baseUrl="http://localhost:8081/book/allBooks"
+
+  private bookUrl="http://localhost:8081/book/addBook"
   constructor(private http:HttpClient) { }
 
   getBooks():Observable<Book[]>{
     return this.http.get<Book[]>(this.baseUrl);
   }
 
+  addBook(book:Book):Observable<object>{
+console.log(book);
+return this.http.post(`${this.bookUrl}`,book);
+  }
 
-  
 }

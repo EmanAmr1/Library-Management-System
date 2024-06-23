@@ -1,0 +1,63 @@
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Admin Panel</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Settings</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/addbook">Add Book</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-2">
+      <div class="row">
+          <div class="col-md-12 text-center">
+              <h1 class="display-4">Welcome to Admin Home</h1>
+
+          </div>
+      </div>
+  </div>
+
+
+  <table class="table m-5">
+    <thead>
+      <tr >
+
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let book of books ">
+       
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.description}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer class="footer bg-light py-3">
+      <div class="container text-center">
+          <span class="text-muted">&copy; 2024 Your Company</span>
+      </div>
+  </footer>
