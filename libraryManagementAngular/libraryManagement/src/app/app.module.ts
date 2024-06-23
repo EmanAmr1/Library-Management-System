@@ -12,6 +12,7 @@ import { UserReuestedBooksComponent } from './components/user-reuested-books/use
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { UsersComponent } from './components/users/users.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     UserReuestedBooksComponent,
     AdminHomeComponent,
     AddBookComponent,
-    AddUserComponent
+    AddUserComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

@@ -15,4 +15,5 @@ signupUser(user:User):Observable<object>{
   return this.httpClient.post(`${this.baseUrl}`,user)
 }
 
+
 }

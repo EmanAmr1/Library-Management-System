@@ -7,6 +7,7 @@ import { UserReuestedBooksComponent } from './components/user-reuested-books/use
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
 {path:"login",component:LoginComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
 {path:"bookHome",component:BookHomeComponent},
 {path:"addbook",component:AddBookComponent},
 {path:"adduser",component:AddUserComponent},
+{path:"users",component:UsersComponent},
 {path:"requestedBooks",component:UserReuestedBooksComponent},
 {path:"adminHome",component:AdminHomeComponent},
 { path: '', redirectTo: '/login', pathMatch: 'full' },
