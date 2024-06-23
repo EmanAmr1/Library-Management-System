@@ -1,6 +1,32 @@
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Admin Panel</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link"routerLink="/users">Users</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/adduser">Add New User </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link"routerLink="/adminHome">Books</a>
+            </li>
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="/addbook">Add New Book</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+
+
 <section class="h-100 bg-dark">
   <form (ngSubmit)="addbook()">
-  <div class="container py-5 h-100">
+  <div class="container my-1 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
         <div class="card card-registration my-4">
