@@ -11,6 +11,7 @@ import { BookHomeComponent } from './components/book-home/book-home.component';
 import { UserReuestedBooksComponent } from './components/user-reuested-books/user-reuested-books.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     BookHomeComponent,
     UserReuestedBooksComponent,
     AdminHomeComponent,
-    AddBookComponent
+    AddBookComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
