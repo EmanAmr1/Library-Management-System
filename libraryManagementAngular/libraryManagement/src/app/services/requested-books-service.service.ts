@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RequestedBooks } from '../classes/requested-books';
+import { User } from '../classes/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class RequestedBooksServiceService {
   private baseUrl="http://localhost:8081/book-requests"
 
   private deleteUrl="http://localhost:8081/book-requests/deleteBook"
+
+  private manageUrl="http://localhost:8081/book-requests/users-for-book"
 
   constructor(private http:HttpClient) { }
 
@@ -29,5 +32,11 @@ export class RequestedBooksServiceService {
 
     const params = new HttpParams().set('username', username).set('bookId', bookId.toString());
     return this.http.delete<any>(`${this.deleteUrl}`, { params });
+  }
+
+
+  manageReq(bookId:number):Observable<User[]>{
+    const params = new HttpParams().set('bookId', bookId.toString())
+    return this.http.get<User[]>(`${this.manageUrl}`,{params});
   }
 }

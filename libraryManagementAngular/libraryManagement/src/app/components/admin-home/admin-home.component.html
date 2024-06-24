@@ -19,6 +19,10 @@
               <li class="nav-item">
                   <a class="nav-link" routerLink="/addbook">Add New Book</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/manageUserBookReq">Requested Books</a>
+            </li>
+
           </ul>
       </div>
   </nav>
@@ -27,7 +31,7 @@
   <div class="container mt-2">
       <div class="row">
           <div class="col-md-12 text-center">
- 
+
 
           </div>
       </div>
@@ -48,14 +52,29 @@
                   <th scope="col">Title</th>
                   <th scope="col">Author</th>
                   <th scope="col">Description</th>
+                  <th scope="col"> Requests</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let book of books">
-                  <td>{{book.title}}</td>
-                  <td>{{book.author}}</td>
-                  <td>{{book.description}}</td>
-                </tr>
+                <ng-container *ngFor="let book of books">
+                  <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.description }}</td>
+                    <td>
+                      <button class="btn btn-info" (click)="manageReq(book.id)">Requested by</button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="selectedBookId === book.id">
+                    <td colspan="4">
+                      <ul class="list-group">
+                        <li  class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let user of usersName">{{ user }}
+                          <button class="ms-5 btn-sm btn-danger" (click)="deleteReq(user,book.id)" >cancel</button></li>
+                      </ul>
+                    </td>
+                  </tr>
+                </ng-container>
+
               </tbody>
             </table>
           </div>
@@ -63,7 +82,6 @@
       </div>
     </div>
   </div>
-
 
 
 

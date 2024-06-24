@@ -7,10 +7,11 @@ import com.spring.libraryManagement.repository.BookRepo;
 import com.spring.libraryManagement.repository.BookRequestRepo;
 import com.spring.libraryManagement.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -54,6 +55,29 @@ public class BookRequsetService {
     public List<BookRequest> getRequestsByUser(User user) {
         return bookRequestRepo.findByUser(user);
     }
+
+
+
+
+
+
+    public List<String> getUsernamesForBook(Long bookId) {
+        List<String> usernames = new ArrayList<>();
+
+        List<BookRequest> bookRequests = bookRequestRepo.findByBookId(bookId);
+
+        for (BookRequest bookRequest : bookRequests) {
+            String username = bookRequest.getUser().getUserName();
+            LocalDateTime RequestedAt = bookRequest.getRequestDate();
+            usernames.add(username);
+        }
+
+        return usernames;
+    }
+
+
+
+
 
 
 }

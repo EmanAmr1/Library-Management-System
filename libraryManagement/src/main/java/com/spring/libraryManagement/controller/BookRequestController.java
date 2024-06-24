@@ -39,4 +39,13 @@ public class BookRequestController {
         return ResponseEntity.ok().body("{\"message\": \"Book request successfully deleted\"}");
     }
 
+
+    @GetMapping("/users-for-book")
+    public ResponseEntity<List<String>> getUsersForBook(@RequestParam Long bookId) {
+        List<String> usernames = bookRequsetService.getUsernamesForBook(bookId);
+        return ResponseEntity.ok(usernames);
+    }
+
+
+
 }

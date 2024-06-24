@@ -8,6 +8,7 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { UsersComponent } from './components/users/users.component';
+import { ManageUserBookReqComponent } from './components/manage-user-book-req/manage-user-book-req.component';
 
 const routes: Routes = [
 {path:"login",component:LoginComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
 {path:"users",component:UsersComponent},
 {path:"requestedBooks",component:UserReuestedBooksComponent},
 {path:"adminHome",component:AdminHomeComponent},
+{path:"manageUserBookReq",component:ManageUserBookReqComponent},
 { path: '', redirectTo: '/login', pathMatch: 'full' },
 { path: '**', redirectTo: '/login' }
 ];
