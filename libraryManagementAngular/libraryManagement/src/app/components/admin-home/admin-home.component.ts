@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/classes/book';
+import { UserRequestDto } from 'src/app/classes/requested-books';
 import { User } from 'src/app/classes/user';
 import { BookServiceService } from 'src/app/services/book-service.service';
 import { RequestedBooksServiceService } from 'src/app/services/requested-books-service.service';
@@ -15,6 +16,10 @@ export class AdminHomeComponent implements OnInit {
   books:Book[]=[]
 usersName:User[]=[]
 selectedBookId!: number ;
+
+userRequests: UserRequestDto[] = [];
+
+
   constructor(private bookService:BookServiceService ,
     private bookreqService:RequestedBooksServiceService ,
     private router:Router ,
@@ -32,16 +37,7 @@ selectedBookId!: number ;
     );
   }
 
-  manageReq(bookId: number) {
-    this.bookreqService.manageReq(bookId).subscribe(
-      data => {
-        this.usersName = data;
-        this.selectedBookId = bookId;
 
-      },
-      error => console.log("error")
-    );
-  }
 
 
   deleteReq(username:any, id:number ){
@@ -53,5 +49,18 @@ selectedBookId!: number ;
       console.error('Error deleting book request', error);
     }
     );
+      }
+
+
+      manageReq(bookId: number) {
+        this.bookreqService.manageReq(bookId).subscribe(
+          data => {
+            console.log(data);
+            this.userRequests = data;
+            this.selectedBookId = bookId;
+
+          },
+          error => console.log("error")
+        );
       }
 }

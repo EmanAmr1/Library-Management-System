@@ -2,6 +2,7 @@ package com.spring.libraryManagement.controller;
 
 import com.spring.libraryManagement.model.entity.BookRequest;
 import com.spring.libraryManagement.model.entity.User;
+import com.spring.libraryManagement.model.entity.UserRequestDto;
 import com.spring.libraryManagement.repository.UserRepo;
 import com.spring.libraryManagement.service.BookRequsetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +41,11 @@ public class BookRequestController {
     }
 
 
-    @GetMapping("/users-for-book")
-    public ResponseEntity<List<String>> getUsersForBook(@RequestParam Long bookId) {
-        List<String> usernames = bookRequsetService.getUsernamesForBook(bookId);
-        return ResponseEntity.ok(usernames);
+
+
+    @GetMapping("/users")
+    public List<UserRequestDto> getUsernamesForBook(@RequestParam Long bookId) {
+        return bookRequsetService.getUsernamesForBook(bookId);
     }
-
-
 
 }

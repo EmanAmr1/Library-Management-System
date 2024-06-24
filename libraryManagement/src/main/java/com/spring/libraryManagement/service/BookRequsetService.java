@@ -3,6 +3,7 @@ package com.spring.libraryManagement.service;
 import com.spring.libraryManagement.model.entity.Book;
 import com.spring.libraryManagement.model.entity.BookRequest;
 import com.spring.libraryManagement.model.entity.User;
+import com.spring.libraryManagement.model.entity.UserRequestDto;
 import com.spring.libraryManagement.repository.BookRepo;
 import com.spring.libraryManagement.repository.BookRequestRepo;
 import com.spring.libraryManagement.repository.UserRepo;
@@ -61,22 +62,22 @@ public class BookRequsetService {
 
 
 
-    public List<String> getUsernamesForBook(Long bookId) {
-        List<String> usernames = new ArrayList<>();
+
+
+
+    public List<UserRequestDto> getUsernamesForBook(Long bookId) {
+        List<UserRequestDto> userRequests = new ArrayList<>();
 
         List<BookRequest> bookRequests = bookRequestRepo.findByBookId(bookId);
 
         for (BookRequest bookRequest : bookRequests) {
             String username = bookRequest.getUser().getUserName();
-            LocalDateTime RequestedAt = bookRequest.getRequestDate();
-            usernames.add(username);
+            LocalDateTime requestDate = bookRequest.getRequestDate();
+            userRequests.add(new UserRequestDto(username, requestDate));
         }
 
-        return usernames;
+        return userRequests;
     }
-
-
-
 
 
 

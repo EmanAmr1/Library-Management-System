@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { RequestedBooks } from '../classes/requested-books';
+import { Observable, catchError, tap } from 'rxjs';
+import { RequestedBooks, UserRequestDto } from '../classes/requested-books';
 import { User } from '../classes/user';
 
 @Injectable({
@@ -14,6 +14,8 @@ export class RequestedBooksServiceService {
   private deleteUrl="http://localhost:8081/book-requests/deleteBook"
 
   private manageUrl="http://localhost:8081/book-requests/users-for-book"
+
+  private manageUrl2="http://localhost:8081/book-requests/users"
 
   constructor(private http:HttpClient) { }
 
@@ -35,8 +37,17 @@ export class RequestedBooksServiceService {
   }
 
 
-  manageReq(bookId:number):Observable<User[]>{
-    const params = new HttpParams().set('bookId', bookId.toString())
-    return this.http.get<User[]>(`${this.manageUrl}`,{params});
+ 
+
+
+  manageReq(bookId: number): Observable<UserRequestDto[]> {
+    const params = new HttpParams().set('bookId', bookId.toString());
+    return this.http.get<UserRequestDto[]>(`${this.manageUrl2}`, { params }).pipe(
+      tap(data => console.log('Data received:', data)),
+      catchError(error => {
+        console.error('Error fetching user requests:', error);
+        throw error; // Rethrow the error to propagate it
+      })
+    );;
   }
 }
