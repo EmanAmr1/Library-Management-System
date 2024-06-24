@@ -11,6 +11,7 @@ import { RequestedBooksServiceService } from 'src/app/services/requested-books-s
 export class BookHomeComponent implements OnInit {
   username!: string;
   books:Book[]=[];
+
   constructor(private bookService:BookServiceService ,private bookRequestService:RequestedBooksServiceService) { }
 
   ngOnInit(): void {
@@ -35,6 +36,7 @@ export class BookHomeComponent implements OnInit {
       (bookRequest) => {
         console.log('Book requested successfully', bookRequest);
         alert('Book requested successfully');
+
       },
       (error) => {
         console.error('Error requesting book', error);

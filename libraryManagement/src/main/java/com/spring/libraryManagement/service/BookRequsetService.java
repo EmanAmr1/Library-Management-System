@@ -42,7 +42,18 @@ public class BookRequsetService {
     }
 
 
+
+    public void  deleteBookReq(String username, Long bookId){
+        User user = userRepo.findUserByUserName(username);
+        Book book = bookRepo.findById(bookId).orElseThrow(() -> new IllegalArgumentException("Invalid book ID"));
+        BookRequest bookRequest = bookRequestRepo.findByUserAndBook(user, book);
+        bookRequestRepo.delete(bookRequest);
+    }
+
+
     public List<BookRequest> getRequestsByUser(User user) {
         return bookRequestRepo.findByUser(user);
     }
+
+
 }

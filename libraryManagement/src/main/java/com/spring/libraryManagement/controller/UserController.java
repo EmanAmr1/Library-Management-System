@@ -4,7 +4,6 @@ import com.spring.libraryManagement.model.entity.User;
 import com.spring.libraryManagement.repository.UserRepo;
 import com.spring.libraryManagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.cassandra.CassandraProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +17,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
+    @Autowired
+    private  UserRepo userRepo;
+
+
+
     @GetMapping("/allUsers")
     public List<User> allUsers(){
         return this.userService.allUsers();
@@ -27,8 +32,9 @@ public class UserController {
 
 
     @PostMapping("/login")
-public ResponseEntity<?> LoginUser(@RequestBody User userData){
-         return this.userService.LoginUser(userData);
+         public ResponseEntity<?> LoginUser(@RequestBody User userData){
+
+        return this.userService.LoginUser(userData);
 }
 
 
@@ -37,4 +43,20 @@ public ResponseEntity<?> LoginUser(@RequestBody User userData){
     return this.userService.SignupUser(userData);
 }
 
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+

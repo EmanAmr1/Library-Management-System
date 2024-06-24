@@ -13,7 +13,7 @@ export class UserReuestedBooksComponent implements OnInit {
   constructor(private requestedBooksService:RequestedBooksServiceService) { }
 
   ngOnInit(): void {
-  
+
    const user = localStorage.getItem('user');
    if (user) {
        this.username = user.replace(/"/g, '');;
@@ -32,6 +32,19 @@ this.loadRequestedBooks();
         console.error('Error fetching requested books', error);
       }
     );
+  }
+
+
+  deleteReq(id:number ){
+this.requestedBooksService.deleteBook(this.username,id).subscribe(()=>{
+  console.log('Book request deleted successfully');
+  
+  this.loadRequestedBooks();
+},
+(error) => {
+  console.error('Error deleting book request', error);
+}
+);
   }
 
 }

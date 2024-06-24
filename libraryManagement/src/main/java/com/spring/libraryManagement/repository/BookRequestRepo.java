@@ -13,5 +13,7 @@ public interface BookRequestRepo extends JpaRepository<BookRequest,Long> {
 
     List<BookRequest> findByUser(User user);
 
+    BookRequest findByUserAndBook(User user,Book book);
+
     boolean existsByUserAndBook(User user, Book book);
 }

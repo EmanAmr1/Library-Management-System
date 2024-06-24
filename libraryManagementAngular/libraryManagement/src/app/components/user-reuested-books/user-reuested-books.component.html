@@ -1,13 +1,15 @@
 
-<section class="vh-100" style="background-color: #eee;">
-  <div class="container h-80">
+<section class="" style="background-color: #eee;">
+  <div class="container ">
 <div class="container">
   <h2 class="text-muted mt-2">Requested Books</h2>
   <ul class="list-group mt-5" *ngIf="bookRequests.length > 0; else noRequests">
     <li class="list-group-item mb-2 " *ngFor="let bookRequest of bookRequests">
       <div class="d-flex w-100 justify-content-between ">
         <h5 class="mb-1">Book Title: {{ bookRequest.book.title }}</h5>
+        <div>
         <small>Requested on: {{ bookRequest.requestDate }}</small>
+        <button class="m-1 btn btn-danger" (click)="deleteReq(bookRequest.book.id)">Cancel</button></div>
       </div>
       <p class="mb-1">Book Author: {{ bookRequest.book.author }}</p>
     </li>

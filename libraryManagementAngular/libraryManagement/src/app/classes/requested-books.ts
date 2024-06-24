@@ -7,7 +7,7 @@ export class RequestedBooks {
     lastName: string;
   };
   book!: {
-    bookId: number;
+    id: number;
     title: string;
     author: string;
   };

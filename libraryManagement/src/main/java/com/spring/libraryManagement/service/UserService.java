@@ -6,13 +6,15 @@ import com.spring.libraryManagement.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
 @Service
 public class UserService {
+
+
+
+
 
     @Autowired
     UserRepo userRepo;
@@ -37,6 +39,10 @@ public class UserService {
         defaultRole.setRoleName("student");
         userData.setRole(defaultRole);
         User userSignupDta =this.userRepo.save(userData);
+
+
+
+
         return ResponseEntity.ok(userSignupDta);
     }
 
