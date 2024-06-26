@@ -6,6 +6,23 @@ public class UserRequestDto {
     private String userName;
     private LocalDateTime requestDate;
 
+    private  LocalDateTime cancelDate;
+
+
+    public LocalDateTime getCancelDate() {
+        return cancelDate;
+    }
+
+    public void setCancelDate(LocalDateTime cancelDate) {
+        this.cancelDate = cancelDate;
+    }
+
+    public UserRequestDto(String userName, LocalDateTime requestDate, LocalDateTime cancelDate) {
+        this.userName = userName;
+        this.requestDate = requestDate;
+        this.cancelDate = cancelDate;
+    }
+
     public UserRequestDto(String userName, LocalDateTime requestDate) {
         this.userName = userName;
         this.requestDate = requestDate;

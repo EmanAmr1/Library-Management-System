@@ -74,7 +74,8 @@
                       <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center"  *ngFor="let userRequest of userRequests">
                         User Name:  {{ userRequest.userName }} --> Requested at: {{ userRequest.requestDate }}
-                          <button class="ms-5 btn-sm btn-danger" (click)="deleteReq( userRequest.userName,book.id)" >cancel</button></li>
+                       <span *ngIf="userRequest.cancelDate"> CanceledAt: {{ userRequest.cancelDate }}</span>
+                        <button *ngIf="!userRequest.cancelDate" class="ms-5 btn-sm btn-danger" (click)="deleteReq(userRequest.userName, book.id)">cancel</button>
 
                       </ul>
                     </td>

@@ -18,7 +18,7 @@ export class RequestedBooks {
 export class UserRequestDto {
   userName!: string;
   requestDate!: string;
-
+  cancelDate!:string;
 }
 
 

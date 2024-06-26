@@ -15,6 +15,8 @@ export class RequestedBooksServiceService {
 
   private manageUrl="http://localhost:8081/book-requests/users"
 
+  private reqForAdmin="http://localhost:8081/book-requests/admin"
+
   constructor(private http:HttpClient) { }
 
   getRequestsByUser(username: string): Observable<RequestedBooks[]> {
@@ -22,11 +24,14 @@ export class RequestedBooksServiceService {
   }
 
 
+ 
+
   requestBook(username: string, bookId: number): Observable<RequestedBooks> {
     return this.http.post<RequestedBooks>(`${this.baseUrl}/request`, null, {
       params: { username, bookId: bookId.toString() }
     });
   }
+
 
   deleteBook(username:string,bookId:number):Observable<any>{
 

@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookRequsetService {
@@ -45,21 +45,32 @@ public class BookRequsetService {
 
 
 
-    public void  deleteBookReq(String username, Long bookId){
+   /* public void  deleteBookReq(String username, Long bookId){
         User user = userRepo.findUserByUserName(username);
         Book book = bookRepo.findById(bookId).orElseThrow(() -> new IllegalArgumentException("Invalid book ID"));
         BookRequest bookRequest = bookRequestRepo.findByUserAndBook(user, book);
         bookRequestRepo.delete(bookRequest);
+    }*/
+
+     public void  deleteBookReq(String username, Long bookId){
+        User user = userRepo.findUserByUserName(username);
+        Book book = bookRepo.findById(bookId).orElseThrow(() -> new IllegalArgumentException("Invalid book ID"));
+        BookRequest bookRequest = bookRequestRepo.findByUserAndBookAndCancelDateIsNull(user, book);
+        bookRequest.setCancelDate(LocalDateTime.now());
+        bookRequestRepo.save(bookRequest);
     }
 
+   /* public List<BookRequest> getRequestsByUser(User user) {
+        return bookRequestRepo.findByUser(user);
+    }*/
 
     public List<BookRequest> getRequestsByUser(User user) {
-        return bookRequestRepo.findByUser(user);
+        return bookRequestRepo.findByUserAndCancelDateIsNull(user);
     }
 
-
-
-
+    public List<BookRequest> getRequestsByUserForAdmin(User user) {
+        return bookRequestRepo.findByUser(user);
+    }
 
     public List<UserRequestDto> getUsernamesForBook(Long bookId) {
         List<UserRequestDto> userRequests = new ArrayList<>();
@@ -69,7 +80,8 @@ public class BookRequsetService {
         for (BookRequest bookRequest : bookRequests) {
             String username = bookRequest.getUser().getUserName();
             LocalDateTime requestDate = bookRequest.getRequestDate();
-            userRequests.add(new UserRequestDto(username, requestDate));
+            LocalDateTime cancelDate=bookRequest.getCancelDate();
+            userRequests.add(new UserRequestDto(username, requestDate,cancelDate));
         }
 
         return userRequests;

@@ -34,6 +34,16 @@ public class BookRequestController {
         return bookRequsetService.getRequestsByUser(user);
     }
 
+
+    @GetMapping("/admin/{username}")
+    public List<BookRequest> getRequestsByUserForAdmin(@PathVariable String username) {
+        User user = userRepo.findUserByUserName(username);
+        return bookRequsetService.getRequestsByUserForAdmin(user);
+    }
+
+
+
+
     @DeleteMapping("/deleteBook")
     public ResponseEntity<String> deleteReq(@RequestParam String username, @RequestParam Long bookId){
         bookRequsetService.deleteBookReq(username,bookId);
