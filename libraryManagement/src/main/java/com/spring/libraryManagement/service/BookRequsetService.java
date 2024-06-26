@@ -32,7 +32,7 @@ public class BookRequsetService {
         Book book = bookRepo.findById(bookId).orElseThrow(() -> new IllegalArgumentException("Invalid book ID"));
 
         // Check if the user has already requested the book
-        boolean hasRequested = bookRequestRepo.existsByUserAndBook(user, book);
+        boolean hasRequested = bookRequestRepo.existsByUserAndBookAndRequestDateNotNull(user, book);
         if (hasRequested) {
             throw new IllegalStateException("You have already requested this book.");
         }
@@ -56,6 +56,7 @@ public class BookRequsetService {
         User user = userRepo.findUserByUserName(username);
         Book book = bookRepo.findById(bookId).orElseThrow(() -> new IllegalArgumentException("Invalid book ID"));
         BookRequest bookRequest = bookRequestRepo.findByUserAndBookAndCancelDateIsNull(user, book);
+        bookRequest.setRequestDate(null);
         bookRequest.setCancelDate(LocalDateTime.now());
         bookRequestRepo.save(bookRequest);
     }

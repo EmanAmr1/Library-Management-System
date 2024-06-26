@@ -16,7 +16,7 @@ public interface BookRequestRepo extends JpaRepository<BookRequest,Long> {
 
     BookRequest findByUserAndBook(User user,Book book);
 
-    boolean existsByUserAndBook(User user, Book book);
+    boolean existsByUserAndBookAndRequestDateNotNull(User user, Book book);
 
     List<BookRequest> findByBookId(Long bookId);
 
