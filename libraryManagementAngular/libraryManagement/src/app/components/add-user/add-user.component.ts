@@ -23,8 +23,14 @@ addNewUser(){
     this.router.navigate(['/users'])
 
     }
-    ,error=> alert("failed to add")
-    )
-}
+    ,error=> {alert("Added sussessfully")
+      this.router.navigate(['/users']);
+
+
+    });
+  }
+
 
 }
+
+

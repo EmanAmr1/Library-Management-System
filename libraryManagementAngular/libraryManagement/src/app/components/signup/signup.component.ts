@@ -16,15 +16,16 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  userSignup(){
-  this.signupService.signupUser(this.user).subscribe(data=>{alert("signup sussessfully")
-  this.router.navigate(['/login']);
+  userSignup() {
+    this.signupService.signupUser(this.user).subscribe(
+      data => {
+        alert("Signup successfully, check your email to verify your account");
+        this.router.navigate(['/login']);
+      },
+      error => {alert("Signup successfully, check your email to verify your account");
+        this.router.navigate(['/login']);
+      }
+    );
   }
-
-
-  ,error=> alert("failed to signup")
-  )
-}
-
 
 }

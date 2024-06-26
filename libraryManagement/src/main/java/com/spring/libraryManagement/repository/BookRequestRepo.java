@@ -18,4 +18,7 @@ public interface BookRequestRepo extends JpaRepository<BookRequest,Long> {
     boolean existsByUserAndBook(User user, Book book);
 
     List<BookRequest> findByBookId(Long bookId);
+
+
+
 }

@@ -37,7 +37,13 @@ public class User {
     @JsonIgnore
     private List<BookRequest> bookRequests;
 
+    @Column(nullable = true)
+    private Boolean enabled;
+
+    @Column(name = "verification_code" ,updatable = false  )
+    private String verificationCode;
 
 
+    private String email;
 
 }

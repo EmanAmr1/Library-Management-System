@@ -13,9 +13,7 @@ export class RequestedBooksServiceService {
 
   private deleteUrl="http://localhost:8081/book-requests/deleteBook"
 
-  private manageUrl="http://localhost:8081/book-requests/users-for-book"
-
-  private manageUrl2="http://localhost:8081/book-requests/users"
+  private manageUrl="http://localhost:8081/book-requests/users"
 
   constructor(private http:HttpClient) { }
 
@@ -37,17 +35,11 @@ export class RequestedBooksServiceService {
   }
 
 
- 
+
 
 
   manageReq(bookId: number): Observable<UserRequestDto[]> {
     const params = new HttpParams().set('bookId', bookId.toString());
-    return this.http.get<UserRequestDto[]>(`${this.manageUrl2}`, { params }).pipe(
-      tap(data => console.log('Data received:', data)),
-      catchError(error => {
-        console.error('Error fetching user requests:', error);
-        throw error; // Rethrow the error to propagate it
-      })
-    );;
+    return this.http.get<UserRequestDto[]>(`${this.manageUrl}`, { params })
   }
 }
