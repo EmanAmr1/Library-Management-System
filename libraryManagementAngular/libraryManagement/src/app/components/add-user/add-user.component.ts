@@ -23,8 +23,8 @@ addNewUser(){
     this.router.navigate(['/users'])
 
     }
-    ,error=> {alert("Added sussessfully")
-      this.router.navigate(['/users']);
+    ,error=> {alert("Error during signup")
+
 
 
     });

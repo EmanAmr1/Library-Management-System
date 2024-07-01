@@ -7,21 +7,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Repository
 public interface BookRequestRepo extends JpaRepository<BookRequest,Long> {
 
-    List<BookRequest> findByUser(User user);
 
-    BookRequest findByUserAndBook(User user,Book book);
+    boolean existsByUserAndBookAndIsReqIsTrue(User user, Book book); //can't req more than one
 
-    boolean existsByUserAndBookAndRequestDateNotNull(User user, Book book);
+    List<BookRequest> findByBookId(Long bookId); //to get all usersName of this book
 
-    List<BookRequest> findByBookId(Long bookId);
+    BookRequest findByUserAndBookAndCancelDateIsNull(User user, Book book); //to make a request
 
-   BookRequest findByUserAndBookAndCancelDateIsNull(User user, Book book);
 
-    List<BookRequest> findByUserAndCancelDateIsNull(User user);
+    List<BookRequest> findByUserAndCancelDateIsNull(User user);  // To get not canceled requests only
 
 }

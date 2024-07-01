@@ -22,8 +22,8 @@ export class SignupComponent implements OnInit {
         alert("Signup successfully, check your email to verify your account");
         this.router.navigate(['/login']);
       },
-      error => {alert("Signup successfully, check your email to verify your account");
-        this.router.navigate(['/login']);
+      error => {alert("Error during signup");
+        console.error("Error during signup: ", error); // Print the error to the console
       }
     );
   }

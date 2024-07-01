@@ -22,6 +22,7 @@ public class BookRequestController {
     private UserRepo userRepo;
 
 
+
     @PostMapping("/request")
     public BookRequest requestBook(@RequestParam String username, @RequestParam Long bookId) {
         return bookRequsetService.requestBook(username, bookId);
@@ -35,14 +36,6 @@ public class BookRequestController {
     }
 
 
-    @GetMapping("/admin/{username}")
-    public List<BookRequest> getRequestsByUserForAdmin(@PathVariable String username) {
-        User user = userRepo.findUserByUserName(username);
-        return bookRequsetService.getRequestsByUserForAdmin(user);
-    }
-
-
-
 
     @DeleteMapping("/deleteBook")
     public ResponseEntity<String> deleteReq(@RequestParam String username, @RequestParam Long bookId){
@@ -51,11 +44,18 @@ public class BookRequestController {
     }
 
 
-
-
     @GetMapping("/users")
     public List<UserRequestDto> getUsernamesForBook(@RequestParam Long bookId) {
         return bookRequsetService.getUsernamesForBook(bookId);
     }
+
+
+    /*
+    @GetMapping("/admin/{username}")
+    public List<BookRequest> getRequestsByUserForAdmin(@PathVariable String username) {
+        User user = userRepo.findUserByUserName(username);
+        return bookRequsetService.getRequestsByUserForAdmin(user);
+    }
+*/
 
 }

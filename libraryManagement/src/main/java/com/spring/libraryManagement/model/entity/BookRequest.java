@@ -37,7 +37,7 @@ public class BookRequest {
     private LocalDateTime cancelDate;
 
 
-
+    private Boolean isReq;
 
     public BookRequest(User user, Book book, LocalDateTime requestDate) {
         this.user = user;

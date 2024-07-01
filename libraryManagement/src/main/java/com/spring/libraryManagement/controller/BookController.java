@@ -4,7 +4,6 @@ import com.spring.libraryManagement.model.entity.Book;
 import com.spring.libraryManagement.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RequestMapping("/book")
@@ -14,6 +13,8 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+
+
 
     @GetMapping("/allBooks")
     public List<Book> allBooks(){
@@ -26,4 +27,6 @@ public class BookController {
         this.bookService.addBook(book);
         return book ;
     }
+
+
 }
