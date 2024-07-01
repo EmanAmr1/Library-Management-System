@@ -19,7 +19,7 @@ user:User =new User();
 
 
 addNewUser(){
-  this.userService.signupUser(this.user).subscribe(data=>{alert("Added sussessfully")
+  this.userService.signupUser(this.user).subscribe(data=>{alert("Added sussessfully,check mail to verify account.")
     this.router.navigate(['/users'])
 
     }

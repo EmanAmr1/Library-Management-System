@@ -13,25 +13,25 @@ import { RequestedBooksServiceService } from 'src/app/services/requested-books-s
 })
 export class AdminHomeComponent implements OnInit {
 
-  books:Book[]=[]
-usersName:User[]=[]
-selectedBookId!: number ;
+  books: Book[] = []
+  usersName: User[] = []
+  selectedBookId!: number;
 
-userRequests: UserRequestDto[] = [];
+  userRequests: UserRequestDto[] = [];
 
 
-  constructor(private bookService:BookServiceService ,
-    private bookreqService:RequestedBooksServiceService ,
-    private router:Router ,
-  private requestedBooksService:RequestedBooksServiceService ) { }
+  constructor(private bookService: BookServiceService,
+    private bookreqService: RequestedBooksServiceService,
+    private router: Router,
+    private requestedBooksService: RequestedBooksServiceService) { }
 
   ngOnInit(): void {
     this.getBooks()
   }
 
 
-  getBooks(){
-    return this.bookService.getBooks().subscribe(data=> {this.books=data },error=>
+  getBooks() {
+    return this.bookService.getBooks().subscribe(data => { this.books = data }, error =>
       console.log("error")
 
     );
@@ -40,27 +40,27 @@ userRequests: UserRequestDto[] = [];
 
 
 
-  deleteReq(username:any, id:number ){
-    this.requestedBooksService.deleteBook(username,id).subscribe(()=>{
+  deleteReq(username: any, id: number) {
+    this.requestedBooksService.deleteBook(username, id).subscribe(() => {
       alert('Book request deleted successfully');
-
-       },
-    (error) => {
-      console.error('Error deleting book request', error);
-    }
+      this.manageReq(id);  // Refresh the list of books after deletion
+    },
+      (error) => {
+        console.error('Error deleting book request', error);
+      }
     );
-      }
+  }
 
 
-      manageReq(bookId: number) {
-        this.bookreqService.manageReq(bookId).subscribe(
-          data => {
-            console.log(data);
-            this.userRequests = data;
-            this.selectedBookId = bookId;
+  manageReq(bookId: number) {
+    this.bookreqService.manageReq(bookId).subscribe(
+      data => {
+        console.log(data);
+        this.userRequests = data;
+        this.selectedBookId = bookId;
 
-          },
-          error => console.log("error")
-        );
-      }
+      },
+      error => console.log("error")
+    );
+  }
 }
